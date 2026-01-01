@@ -1,2 +1,17 @@
-# Call-To-Action
+# Call To Action
 Allows teammates to sync on a specific action at a specified time within a match.
+
+### Summary
+The purpose of this script is to allow a team to cordinate a communicated action based on a specified timer value. Explicitely, the expectatation is that a) one player will use the quickchat menu call a given Call To Action timer, b) there will be communication by voice as to what that specific action may be, and finally c) the necessary players will plan to execute that action when that timer counts down to zero.
+
+I believe that there was a similar script called teamtimer.vl2. My understanding of how this worked was that player need to type a command into the command line, such as !start 30, and this would somehow start a timer for the players to coordinate at a specific time. I was unable to get this script to work, so I don't exactly know how it worked. Regardless, the requirement of typing in a timer into the command prompt is cumbersome in itself. I wanted to redesign this concept so that it worked via the quickchat V-menu instead.
+
+A Call To Action must be initiated through the quick chat V-menu. A new submenu option, "Call To Action", has been added. A user is given the option to initiate a timer through this menu. A timer can be initiated for between 10 seconds and 60 seconds, with options incrementing by 5 seconds. The following notes are important for understanding how a Call To Action timer works:
+
+1. The script evaluates and initiates a timer based on a specifically formatted *chat message in the Chat HUD*. The script does *not* manage timers through either a) server to client communications or b) client to client communications. In other words, all direction to the script is managed by the Chat HUD messages.
+2. Given #1 above, that means that all timers are *local* to the person using the script. For example, if a person initiates a timer, and that person either a) leaves the match or b) switches teams, then that timer will keep going. As another example, this script supports whitelisting and blacklisting. If a person initiates a timer, but you have that person blacklisted, then a) that timer will be intiated for everyone else, but b) that timer will not be initiated for you.
+3. If you initiate a timer, but you need to change that timer to a different *value*, then you just need to create a new timer. The script will simply replace the the timer you had initially called. This means that you *cannot* have two active timers at the same time. However, this should not be supported anyway, as this would be incredibly confusing to the team.
+4. If you initiate a timer, but you no longer wish to keep that timer, then the quick chat menu offers a cancel option, "Cancel Current CTA". Simply select that option, and the timer will be removed for all players that are currently tracking the timer that you initiated.
+5. A timer will automatically be removed once it's countdown has completed. You can customize when this "completion" occurs. For example, you may want the timer to continue to countdown after it has reached 0, because you may want to plan a specific action after that. You can configure a timer to keep counting down to a value of -10 seconds.
+6. Finally, there are a number of customization options. Please see the Options for the script in the Script tab in the browser. Also, please see the two preference files which are included with this script.
+7. As noted previously, this script supports player whitelisting and blacklisting. The true purpose for this is to ensure that, if people abuse the script, you have a way to "mute" them. If you enable both whitelisting and blacklisting, then whitelisting will always take precedence. 
