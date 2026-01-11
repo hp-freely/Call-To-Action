@@ -1,3 +1,7 @@
+Download Instructions:
+1. Click "CallToAction.zip"
+2. Click the "..." button in the top right of page.
+3. Select "Download"
 # Call To Action
 Allows teammates to sync on a specific action at a specified time within a match.
 
